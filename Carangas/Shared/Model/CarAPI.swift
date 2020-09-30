@@ -8,6 +8,16 @@
 
 import Foundation
 
+enum APIError: Error {
+    case badURL
+    case taskError
+    case noResponse
+    case invalidStatusCode(Int)
+    case noData
+    case decodeError
+}
+
+
 class CarAPI {
     
     private let basePath = "https://carangas.herokuapp.com/cars"
@@ -20,35 +30,36 @@ class CarAPI {
         return configuration
     }()
     
-    private lazy var session = URLSession(configuration: configuration)
+    private lazy var session = URLSession.shared
     
-    func loadCars() {
+    func loadCars(onComplete: @escaping (Result<[Car], APIError>) -> Void) {
         guard let url = URL(string: basePath) else {
+            onComplete(.failure(.badURL))
             return
         }
+        
         let task = session.dataTask(with: url) { (data, response, error) in
-            
-            if let error = error {
-                return print(error)
+            if let _ = error {
+                onComplete(.failure(.taskError))
+                return
             }
-            
             guard let response = response as? HTTPURLResponse else {
-                return print("Objeto response vazio!")
+                onComplete(.failure(.noResponse))
+                return
             }
-            
             if !(200...299 ~= response.statusCode) {
-                return print("Status code inválido:", response.statusCode)
+                onComplete(.failure(.invalidStatusCode(response.statusCode)))
+                return
             }
-            
             guard let data = data else {
-                return print("Sem dados!!!")
+                onComplete(.failure(.noData))
+                return
             }
-            
             do {
                 let cars = try JSONDecoder().decode([Car].self, from: data)
-                print("Você tem um total de \(cars.count) carros")
+                onComplete(.success(cars))
             } catch {
-                print(error)
+                onComplete(.failure(.decodeError))
             }
         }
         task.resume()
