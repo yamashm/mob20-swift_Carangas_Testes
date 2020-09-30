@@ -23,14 +23,14 @@ class CarAPI {
     private let basePath = "https://carangas.herokuapp.com/cars"
     private let configuration: URLSessionConfiguration = {
         let configuration = URLSessionConfiguration.default
-        configuration.allowsCellularAccess = false
+        configuration.allowsCellularAccess = true
         configuration.timeoutIntervalForRequest = 60
         configuration.httpAdditionalHeaders = ["Content-Type": "application/json"]
         configuration.httpMaximumConnectionsPerHost = 5
         return configuration
     }()
     
-    private lazy var session = URLSession.shared
+    private lazy var session = URLSession(configuration: configuration)
     
     func loadCars(onComplete: @escaping (Result<[Car], APIError>) -> Void) {
         guard let url = URL(string: basePath) else {
