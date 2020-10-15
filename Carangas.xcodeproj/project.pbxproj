@@ -153,12 +153,12 @@
 		A19C4BE01F92C57D00A25342 /* Carangas */ = {
 			isa = PBXGroup;
 			children = (
-				2297F6132523ECD500F89427 /* Shared */,
+				A19C4BE51F92C57D00A25342 /* Main.storyboard */,
 				2297F60C2523E53100F89427 /* Main */,
 				2297F60E2523E53B00F89427 /* Listing */,
 				2297F60A2523E4E300F89427 /* Visualization */,
 				2297F6102523E54B00F89427 /* Form */,
-				A19C4BE51F92C57D00A25342 /* Main.storyboard */,
+				2297F6132523ECD500F89427 /* Shared */,
 				2297F6122523E56300F89427 /* Supporting Files */,
 			);
 			path = Carangas;
