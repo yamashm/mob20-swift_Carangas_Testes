@@ -18,48 +18,60 @@ class AddEditViewController: UIViewController {
     @IBOutlet weak var loading: UIActivityIndicatorView!
     
     // MARK: - Properties
-    var car: Car!
+    var viewModel: CarFormViewModel?
     
     // MARK: - Super Methods
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        if car != nil {
-            tfName.text = car.name
-            tfPrice.text = "\(car.price)"
-            tfBrand.text = car.brand
-            scGasType.selectedSegmentIndex = car.gasType
-            btAddEdit.setTitle("Alterar carro", for: .normal)
-            title = "Alteração"
-        }
+        setupView()
     }
     
     // MARK: - IBActions
     @IBAction func addEdit(_ sender: UIButton) {
-        if car == nil {
-            car = Car()
-        }
-        car.brand = tfBrand.text!
-        car.name = tfName.text!
-        car.gasType = scGasType.selectedSegmentIndex
-        car.price = Int(tfPrice.text!) ?? 0
+        viewModel?.saveCar(name: tfName.text!, brand: tfBrand.text!, gasIndex: scGasType.selectedSegmentIndex, price: tfPrice.text!)
+    }
+    
+    // MARK: - Methods
+    private func setupView() {
+        viewModel?.delegate = self
         
-        if car._id == nil {
-            CarAPI().createCar(car) { [weak self] (_) in
-                self?.goBack()
-            }
-        } else {
-            CarAPI().updateCar(car) { [weak self] (_) in
-                self?.goBack()
+           if let viewModel = viewModel {
+               tfName.text = viewModel.name
+               tfPrice.text = viewModel.price
+               tfBrand.text = viewModel.brand
+               scGasType.selectedSegmentIndex = viewModel.fuelIndex
+               btAddEdit.setTitle(viewModel.buttonTitle, for: .normal)
+               title = viewModel.title
+           }
+       }
+    
+    private func checkResult(_ result: Result<Void, APIError>, withError message: String){
+        DispatchQueue.main.async {
+            switch result{
+            case .success:
+                self.goBack()
+            case .failure(let apiError):
+                Alert.show(title: "Erro", message: "\(message) \(apiError.errorMessage)", presenter: self)
             }
         }
     }
     
-    // MARK: - Methods
     private func goBack() {
         DispatchQueue.main.async {
             self.navigationController?.popViewController(animated: true)
         }
         
     }
+}
+
+extension AddEditViewController: CarFormViewModelDelegate{
+    func onCarCreated(result: Result<Void, APIError>) {
+        checkResult(result, withError: "Falha ao criar o carro. Motivo:")
+    }
+    
+    func onCarUpdated(result: Result<Void, APIError>) {
+        checkResult(result, withError: "Falha ao atualizar o carro. Motivo:")
+    }
+    
+    
 }

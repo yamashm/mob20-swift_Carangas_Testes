@@ -24,8 +24,15 @@ class CarsTableViewController: UITableViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let vc = segue.destination as? CarViewController, let indexPath = tableView.indexPathForSelectedRow {
-            vc.viewModel = viewModel.getCarVisualizationViewModel(indexPath)
+        
+        switch segue.destination {
+        case let carViewController as CarViewController:
+            guard let indexPath = tableView.indexPathForSelectedRow else {return}
+            carViewController.viewModel = viewModel.getCarVisualizationViewModel(indexPath)
+        case let carFormViewController as AddEditViewController:
+            carFormViewController.viewModel = CarFormViewModel()
+        default:
+            break
         }
     }
     
@@ -67,7 +74,7 @@ class CarsTableViewController: UITableViewController {
                     break
                 case .failure(let apiError):
                     DispatchQueue.main.async {
-                        Alert.show(title: "Erro", message: "Nao foi possivel excluir o carro. Motivo: \(apiError.erroMessage)" , presenter: self)
+                        Alert.show(title: "Erro", message: "Nao foi possivel excluir o carro. Motivo: \(apiError.errorMessage)" , presenter: self)
                     }
                 }
             }

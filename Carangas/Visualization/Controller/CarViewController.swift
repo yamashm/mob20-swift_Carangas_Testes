@@ -17,26 +17,22 @@ class CarViewController: UIViewController {
     // MARK: - Properties
     var viewModel: CarVisualizationViewModel?
     
-    var car: Car!
-    let numberFormatter: NumberFormatter = {
-        let numberFormatter = NumberFormatter()
-        numberFormatter.numberStyle = .currency
-        numberFormatter.locale = Locale(identifier: "pt_BR")
-        return numberFormatter
-    }()
-
+    
     // MARK: - Super Methods
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        title = car.name
-        lbBrand.text = car.brand
-        lbGasType.text = car.fuel
-        lbPrice.text = numberFormatter.string(from: NSNumber(value: car.price))
+        if let viewModel = viewModel {
+            title = viewModel.title
+            lbBrand.text = viewModel.brand
+            lbGasType.text = viewModel.fuelTyp
+            lbPrice.text = viewModel.price
+            
+        }
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let vc = segue.destination as? AddEditViewController {
-            vc.car = car
-        }
-    }
+           if let vc = segue.destination as? AddEditViewController {
+               vc.viewModel = viewModel?.getCarFormViewModel()
+           }
+       }
 }

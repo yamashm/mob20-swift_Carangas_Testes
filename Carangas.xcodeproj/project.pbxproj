@@ -24,6 +24,8 @@
 		AC9888F325390E41005D617F /* CarCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC9888F225390E41005D617F /* CarCellViewModel.swift */; };
 		AC9888F525391300005D617F /* Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC9888F425391300005D617F /* Alert.swift */; };
 		AC9888F7253917A6005D617F /* CarVisualizationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC9888F6253917A6005D617F /* CarVisualizationViewModel.swift */; };
+		AC9888F925391F60005D617F /* Formatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC9888F825391F60005D617F /* Formatter.swift */; };
+		AC9888FB2539219C005D617F /* CarFormViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC9888FA2539219C005D617F /* CarFormViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -46,6 +48,8 @@
 		AC9888F225390E41005D617F /* CarCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarCellViewModel.swift; sourceTree = "<group>"; };
 		AC9888F425391300005D617F /* Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alert.swift; sourceTree = "<group>"; };
 		AC9888F6253917A6005D617F /* CarVisualizationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarVisualizationViewModel.swift; sourceTree = "<group>"; };
+		AC9888F825391F60005D617F /* Formatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Formatter.swift; sourceTree = "<group>"; };
+		AC9888FA2539219C005D617F /* CarFormViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarFormViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -153,6 +157,7 @@
 				2297F6152523ECEE00F89427 /* Car.swift */,
 				2297F6172523EDE800F89427 /* CarAPI.swift */,
 				AC9888F425391300005D617F /* Alert.swift */,
+				AC9888F825391F60005D617F /* Formatter.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -232,6 +237,7 @@
 		AC9888E725390722005D617F /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				AC9888FA2539219C005D617F /* CarFormViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -318,7 +324,9 @@
 				A19C4BE41F92C57D00A25342 /* CarViewController.swift in Sources */,
 				AC9888F325390E41005D617F /* CarCellViewModel.swift in Sources */,
 				2297F6162523ECEE00F89427 /* Car.swift in Sources */,
+				AC9888F925391F60005D617F /* Formatter.swift in Sources */,
 				A16BA8671F953B940045AD32 /* AddEditViewController.swift in Sources */,
+				AC9888FB2539219C005D617F /* CarFormViewModel.swift in Sources */,
 				AC9888EF2539097D005D617F /* CarsListingViewModel.swift in Sources */,
 				AC9888F525391300005D617F /* Alert.swift in Sources */,
 				AC9888F7253917A6005D617F /* CarVisualizationViewModel.swift in Sources */,
