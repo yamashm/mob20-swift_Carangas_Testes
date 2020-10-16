@@ -15,6 +15,8 @@ class CarViewController: UIViewController {
     @IBOutlet weak var lbPrice: UILabel!
     
     // MARK: - Properties
+    var viewModel: CarVisualizationViewModel?
+    
     var car: Car!
     let numberFormatter: NumberFormatter = {
         let numberFormatter = NumberFormatter()

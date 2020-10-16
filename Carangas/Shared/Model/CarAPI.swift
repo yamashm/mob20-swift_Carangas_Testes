@@ -15,6 +15,23 @@ enum APIError: Error {
     case invalidStatusCode(Int)
     case noData
     case decodeError
+    
+    var errorMessage: String {
+        switch self {
+        case .badURL:
+            return "URL inválida"
+        case .taskError:
+            return "Erro ao executar a requisição"
+        case .noResponse:
+            return "Problemas ao receber dados do servidor"
+        case .invalidStatusCode(let statusCode):
+            return "Erro no serviço. Código: \(statusCode)"
+        case .noData:
+            return "Não foi possível recuperar os carros"
+        case .decodeError:
+            return "Dados inválidos"
+        }
+    }
 }
 
 
