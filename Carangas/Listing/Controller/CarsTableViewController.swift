@@ -7,9 +7,18 @@
 
 import UIKit
 
+protocol CarPresenter: AnyObject {
+    func showCarWith(viewModel: CarVisualizationViewModel)
+}
+
+protocol CarCreator: AnyObject {
+    func createCar(viewModel: CarFormViewModel)
+}
+
 class CarsTableViewController: UITableViewController {
     // MARK: - Properties
     var viewModel = CarsListingViewModel()
+    weak var coordinator: CarsListingCoordinator?
 
     // MARK: - Super Methods
     override func viewDidLoad() {
@@ -23,6 +32,10 @@ class CarsTableViewController: UITableViewController {
         loadCars()
     }
     
+    @IBAction func createCar(_ sender: UIBarButtonItem) {
+        coordinator?.createCar()
+    }
+    /*
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         switch segue.destination {
@@ -35,6 +48,7 @@ class CarsTableViewController: UITableViewController {
             break
         }
     }
+     */
     
     // MARK: - Methods
     @objc private func loadCars() {
@@ -79,5 +93,10 @@ class CarsTableViewController: UITableViewController {
                 }
             }
         }
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let carVisualizationViewModel = viewModel.getCarVisualizationViewModel(indexPath)
+        coordinator?.showCarWith(viewModel: carVisualizationViewModel)
     }
 }

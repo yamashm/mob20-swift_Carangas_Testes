@@ -10,7 +10,7 @@
         <!--Carangas-->
         <scene sceneID="J5x-MI-WMG">
             <objects>
-                <tableViewController id="OK1-Ie-AaM" customClass="CarsTableViewController" customModule="Carangas" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="CarsTableViewController" id="OK1-Ie-AaM" customClass="CarsTableViewController" customModule="Carangas" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="aNz-Io-ARh">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -44,9 +44,6 @@
                                         </label>
                                     </subviews>
                                 </tableViewCellContentView>
-                                <connections>
-                                    <segue destination="Bsu-SO-z85" kind="show" identifier="carSegue" id="ycY-0g-tfh"/>
-                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -57,7 +54,7 @@
                     <navigationItem key="navigationItem" title="Carangas" id="x1D-cR-YoL">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="uBV-U3-Te5">
                             <connections>
-                                <segue destination="Seo-Yu-apb" kind="show" identifier="addSegue" id="I7H-gR-OXX"/>
+                                <action selector="createCar:" destination="OK1-Ie-AaM" id="zlK-eh-RYk"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -68,7 +65,7 @@
                         <attributedString key="attributedTitle">
                             <fragment content="Atualizando...">
                                 <attributes>
-                                    <font key="NSFont" metaFont="menu" size="11"/>
+                                    <font key="NSFont" metaFont="message" size="11"/>
                                     <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                 </attributes>
                             </fragment>
@@ -78,26 +75,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="m8v-vI-UXt" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="696.79999999999995" y="147.97601199400302"/>
-        </scene>
-        <!--Form-->
-        <scene sceneID="ErO-3a-emx">
-            <objects>
-                <viewControllerPlaceholder storyboardName="Form" id="Seo-Yu-apb" sceneMemberID="viewController">
-                    <navigationItem key="navigationItem" id="QfU-Ab-yIF"/>
-                </viewControllerPlaceholder>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Ceq-pL-3hw" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1619" y="38"/>
-        </scene>
-        <!--Visualization-->
-        <scene sceneID="KJm-zQ-lSm">
-            <objects>
-                <viewControllerPlaceholder storyboardName="Visualization" id="Bsu-SO-z85" sceneMemberID="viewController">
-                    <navigationItem key="navigationItem" id="Kzn-ML-3kB"/>
-                </viewControllerPlaceholder>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Ze2-Wk-0JW" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1674" y="242"/>
         </scene>
     </scenes>
 </document>

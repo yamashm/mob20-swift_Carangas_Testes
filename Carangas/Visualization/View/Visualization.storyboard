@@ -12,7 +12,7 @@
         <!--Caranga-->
         <scene sceneID="Jgc-sf-Gag">
             <objects>
-                <viewController id="sgV-b4-M3W" customClass="CarViewController" customModule="Carangas" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="CarViewController" id="sgV-b4-M3W" customClass="CarViewController" customModule="Carangas" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="O9Y-Om-VPW">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -51,11 +51,7 @@
                         <viewLayoutGuide key="safeArea" id="fms-P4-Ckz"/>
                     </view>
                     <navigationItem key="navigationItem" title="Caranga" id="fyE-wU-0ZD">
-                        <barButtonItem key="rightBarButtonItem" systemItem="edit" id="d2U-xp-yjG">
-                            <connections>
-                                <segue destination="Seo-Yu-apb" kind="show" identifier="editSegue" id="e9Q-5N-22S"/>
-                            </connections>
-                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="edit" id="d2U-xp-yjG"/>
                     </navigationItem>
                     <connections>
                         <outlet property="lbBrand" destination="qcK-yy-gs8" id="BE9-6d-ZE5"/>
@@ -66,16 +62,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Dts-hI-FEq" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1653.5999999999999" y="458.32083958020991"/>
-        </scene>
-        <!--Form-->
-        <scene sceneID="ErO-3a-emx">
-            <objects>
-                <viewControllerPlaceholder storyboardName="Form" id="Seo-Yu-apb" sceneMemberID="viewController">
-                    <navigationItem key="navigationItem" id="QfU-Ab-yIF"/>
-                </viewControllerPlaceholder>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Ceq-pL-3hw" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2054" y="-91"/>
         </scene>
     </scenes>
     <resources>
