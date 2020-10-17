@@ -16,6 +16,7 @@ protocol Coordinator: AnyObject {
     func start()
     func add(childCoordinator coordinator: Coordinator)
     func remove(childCoordinator coordinator: Coordinator)
+    func childDidFinish(_ child: Coordinator?)
 }
 
 extension Coordinator{
@@ -26,5 +27,9 @@ extension Coordinator{
         childCoordinators = childCoordinators.filter{
             $0 !== coordinator //!== comprador de classes, != comprador de struct
         }
+    }
+    func childDidFinish(_ child: Coordinator?){
+        guard let child = child  else {return}
+        remove(childCoordinator: child)
     }
 }

@@ -19,6 +19,7 @@ class AddEditViewController: UIViewController {
     
     // MARK: - Properties
     var viewModel: CarFormViewModel?
+    weak var coordinator: CarFormCoordinator?
     
     // MARK: - Super Methods
     override func viewDidLoad() {
@@ -62,6 +63,11 @@ class AddEditViewController: UIViewController {
         }
         
     }
+    
+    deinit {
+          print("CarFormViewController -> deinit")
+          coordinator?.childDidFinish(nil)
+      }
 }
 
 extension AddEditViewController: CarFormViewModelDelegate{

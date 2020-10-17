@@ -24,17 +24,23 @@ class CarsListingCoordinator: Coordinator{
         viewController.coordinator = self
         navigationController.pushViewController(viewController, animated: false)
     }
-    
+}
+
+extension CarsListingCoordinator: CarPresenter{
     func showCarWith(viewModel: CarVisualizationViewModel){
-        let viewController = CarViewController.instantiateFromStoryboard(.visualization)
-        viewController.viewModel = viewModel
-        navigationController.pushViewController(viewController, animated: true)
-    }
-    
+           let childCoordinator = CarVisualizationCoordinator(navigationController: navigationController, carVisualizatonViewModel: viewModel)
+        childCoordinator.parentCoordinator = self
+        add(childCoordinator: childCoordinator)
+        childCoordinator.start()
+       }
+}
+
+extension CarsListingCoordinator: CarCreator{
     func createCar(viewModel: CarFormViewModel = CarFormViewModel()){
-        let viewController = AddEditViewController.instantiateFromStoryboard(.form)
-        viewController.viewModel = viewModel
-        navigationController.pushViewController(viewController, animated: true)
+        let childCoordinator = CarFormCoordinator(navigationController: navigationController, carFormViewModel: viewModel)
+        childCoordinator.parentCoordinator = self
+        add(childCoordinator: childCoordinator)
+        childCoordinator.start()
     }
 }
 

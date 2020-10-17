@@ -16,6 +16,7 @@ class CarViewController: UIViewController {
     
     // MARK: - Properties
     var viewModel: CarVisualizationViewModel?
+    weak var coordinator: CarVisualizationCoordinator?
     
     
     // MARK: - Super Methods
@@ -30,9 +31,20 @@ class CarViewController: UIViewController {
         }
     }
     
+    /*
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
            if let vc = segue.destination as? AddEditViewController {
                vc.viewModel = viewModel?.getCarFormViewModel()
            }
        }
+    */
+    @IBAction func editCar(_ sender: UIBarButtonItem) {
+        guard let viewModel = viewModel else {return}
+        coordinator?.editCar(viewModel: viewModel.getCarFormViewModel())
+    }
+    
+    deinit {
+        print("CarViewController -> deinit")
+        coordinator?.childDidFinish(nil)
+    }
 }

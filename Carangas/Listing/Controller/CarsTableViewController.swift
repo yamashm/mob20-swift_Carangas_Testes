@@ -15,10 +15,12 @@ protocol CarCreator: AnyObject {
     func createCar(viewModel: CarFormViewModel)
 }
 
+typealias CarEnabled = Coordinator & CarPresenter & CarCreator //Juncao de protocolos
+
 class CarsTableViewController: UITableViewController {
     // MARK: - Properties
     var viewModel = CarsListingViewModel()
-    weak var coordinator: CarsListingCoordinator?
+    weak var coordinator: CarEnabled? //Deve implmentar os 3 protocolos
 
     // MARK: - Super Methods
     override func viewDidLoad() {
@@ -33,7 +35,7 @@ class CarsTableViewController: UITableViewController {
     }
     
     @IBAction func createCar(_ sender: UIBarButtonItem) {
-        coordinator?.createCar()
+        coordinator?.createCar(viewModel: CarFormViewModel())
     }
     /*
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

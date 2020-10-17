@@ -51,7 +51,11 @@
                         <viewLayoutGuide key="safeArea" id="fms-P4-Ckz"/>
                     </view>
                     <navigationItem key="navigationItem" title="Caranga" id="fyE-wU-0ZD">
-                        <barButtonItem key="rightBarButtonItem" systemItem="edit" id="d2U-xp-yjG"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="edit" id="d2U-xp-yjG">
+                            <connections>
+                                <action selector="editCar:" destination="sgV-b4-M3W" id="jW4-vb-Fry"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="lbBrand" destination="qcK-yy-gs8" id="BE9-6d-ZE5"/>
