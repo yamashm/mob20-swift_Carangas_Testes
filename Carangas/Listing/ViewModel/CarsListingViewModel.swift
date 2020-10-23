@@ -16,7 +16,11 @@ class CarsListingViewModel{
             carsDidUpdate?()
         }
     }
-    private var service = CarAPI()
+    private var service: CarAPIProtocol// CarAPI()
+    
+    init(service: CarAPIProtocol = CarAPI()){
+        self.service = service
+    }
     
     var carsDidUpdate: (() -> Void)?
     
